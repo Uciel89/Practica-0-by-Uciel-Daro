@@ -1,0 +1,192 @@
+#|Practica 0|#
+
+;Expresiones aritmeticas
+
+;1.a
+;(- (* 12 5) (* 7 6))
+
+;(+ (- (* 3 5) (* 7 (/ 4 14))) (/ 3 1))
+
+;(+(+ (cos 0.8) 1/5 ) ( * (sin 0.5) 3.5) )
+
+;1.c
+;(*(+ 2 3) 4)
+
+;2
+
+;a 
+;(/ 1 (sin (sqrt 3))) --> Ok
+;b
+;(* (sqrt 2) (sin pi)) --> Ok
+;c
+;(* (sqrt 2) (sin pi)) --> Ok
+;d
+;(* (sqrt 5) (sqrt (/ 3 (cos pi)))) -->  Ok
+;e
+;(/ (sqrt 5) (sin (* 3 0)))
+#|No funciona porque estoy diviendo 0, (sin (* 3 0))
+Error --> /: division by zero|#
+;f
+;(/ (+ 3) (* 2 4))
+#|No funciona porque en (+ 3) falta un argumento para que el
+operador de suma funciona
+Error --> +: expects at least 2 arguments, but found only 1|#
+;g
+;(* 1 2 3 4 5 6 7 8) --> ok
+;h
+;(/ 120 2 3 2 2 5) --> ok
+
+#|String|#
+
+;1
+
+;a
+;(string-append "Hola" "mundo") --> OK
+;b
+;(string-append "Pro" "gra" "ma.") --> OK
+;c
+;(number->string 1357) --> OK
+;d
+;(string-append "La respuesta es " (+ 21 21))
+#|
+Error --> string-append: expects a string as 2nd argument, given 42
+No funciona porque string-append es para concatenar string, no tipo Number y
+String.
+|#
+;e
+;(string-append "La respuesta es " (number->string (+ 21 21))) --> OK
+;f
+;(* (string-length "Hola") (string-length "Chau")) --> OK
+
+#|Mezcla booleanos y numeros|#
+
+;1
+
+;a
+;(not #t) --> OK
+;b
+;(or #t #f) --> OK
+;c
+;(and #t #f) --> OK
+;d
+;(and #t (or #f (not #f)) (not #t)) --> OK
+;e
+;(not (= 2 (* 1 3))) --> OK
+;f
+;(or (= 2 (* 1 3)) (< 4 (+ 3 2))) --> OK
+
+;2
+
+;(cos 0) ;--> es verdadero
+
+;(string-length "Hola, mundo") --> La longitud es 11
+
+;(and ( > pi 3) (< pi 4) ) --> Verdadero
+
+;(= (sqr 5) (sqrt 625)) --> verdadero
+
+
+#|Imagenes|#
+
+;1
+;a
+;(circle 1000 "solid" "red")
+;b
+;(rectangle 300 200 "solid" "blue")
+;c
+;(rectangle 500 12 "outline" "magenta")
+;d
+;(overlay (rectangle 20 20 "solid" "blue") (circle 50 "solid"
+;"green"))
+;e
+;(empty-scene 100 100)
+;f
+;(place-image (circle 10 "solid" "blue") 45 45 (empty-scene 100
+;100))
+;g
+;(+ (image-width (circle 10 "solid" "red")) (image-height
+;(rectangle 10 20 "solid" "blue")))
+
+#|Constantes|#
+;(define P "Neptuno")
+
+;(define 1TRES 3)
+
+;(define CINCO (+ 1 (* 2 2)))
+
+;(define VERDADERO #true)
+
+;(define PUNTOROJO (circle 3 "solid" "red"))
+
+#|Cuando definimos una constante, esta la podemos utilizar en expresiones
+por ejemplo: (define CINCO (+ 1 (* 2 2))). Esto me devuelve un numero que
+podria operar en una expresion: (* CINCO 56)|#
+
+;(+ CINCO 3)
+
+;Esto se puede hacer con todos los tipos de datos 
+
+;(overlay PUNTOROJO (rectangle 50 50 "outline" "blue"))
+
+#|Funciones|#
+
+;Estructura de una funcion en Racket
+;(define ( <identificador>    <argumento 1> ... <argumento n> )   
+;<expresión> )
+
+;Ej
+;Función que dibuje un cuadrado azul de una dimensión dada.
+;(define (cuad-azul x) (square x "solid" "blue"))
+;(cuad-azul 50)
+
+;Otro ejemplo interesante seria
+;(define (h x y) (< x (* 2 y)))
+;(h 4 5)
+;o
+;(define (doble y) (* 2 y))
+;(define (h x y) (< x (doble y)))
+;(h 5 6 )
+
+;1
+;a
+;(define (doble x) (* 2 x))
+;(define (cuad-azul x)  (square (doble x) "solid" "blue"))
+
+;(cuad-azul 10)
+;b
+;(define (h x y) (< x (* 2 y)))
+
+;(and (h 2 3) (h 3 4))
+;c
+;(define (f x) (+ x 1))
+
+;(define (doble x) (* x 2))
+
+;(= (f 1) (doble 1))
+
+;2
+
+;(define (distancia x y) (sqrt (+ (expt x 2) (expt y 2))))
+;(distancia 5 5)
+
+;3
+
+;(define (distancia1 x1 y1) (sqrt(+ (expt x1 2)(expt y1 2))))
+
+;(define (distancia2 x2 y2) (sqrt(+ (expt x2 2)(expt y2 2))))
+
+;(distancia1 6 7)
+;(distancia2 4 6)
+
+;4
+;a es la arista del cubo, y a "a" lo pongo al cubo "3" para sacar el volumen 
+;(define (vol-cubo a) (expt a 3))
+;(vol-cubo 4)
+
+;5
+;(define (area-cubo a) (* 6 (expt a 2)))
+;(area-cubo 5)
+
+;6
+;(define (metro-pie x) (/ (* x 3.28) 1))
+;(metro-pie 5)
