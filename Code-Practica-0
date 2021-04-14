@@ -171,10 +171,18 @@ podria operar en una expresion: (* CINCO 56)|#
 
 ;3
 
+#|
+No va al cazo, pero sirve para sacar la distancia del punto 0 al punto x,y
+(define (distancia1 x1 y1) (sqrt(+ (expt x1 2)(expt y1 2))))
+
+(define (distancia2 x2 y2) (sqrt(+ (expt x2 2)(expt y2 2))))
+
+(distancia1 6 7)
+(distancia2 4 6)|#
+
 ;(define (d x1 x2 y1 y2) (sqrt(+  (expt (- x2 x1) 2) (expt (- y2 y1) 2))))
 
 ;(d 5 5 5 5)
-
 ;4
 ;a es la arista del cubo, y a "a" lo pongo al cubo "3" para sacar el volumen 
 ;(define (vol-cubo a) (expt a 3))
@@ -185,5 +193,48 @@ podria operar en una expresion: (* CINCO 56)|#
 ;(area-cubo 5)
 
 ;6
-;(define (metro-pie x) (/ (* x 3.28) 1))
+;(define (metro-pie x) (/ (* x 3.281) 1))
 ;(metro-pie 5)
+
+;7
+
+;(define (cel-fan c) (+ (* c 9/5) 32))
+;(cel-fan 1)
+
+;8
+;(define (posible? a b c) (and (>= (+ b c)a ) (>= (+ a b) c)))
+;(posible? 2 3 4)
+
+;9
+;(define (pitagorica? a b c) (= (sqr a) (+ (sqr b) (sqr c))))
+
+;(pitagorica? 5 4 3)
+
+;10
+;(define (suma-log s1 s2) (+ (string-length s1) (string-length s2)))
+;(suma-log "hola" "hola")
+
+;11
+#|Hay relativamente 3 formar de hacer el ejercicio|#
+
+;a. Metodo de minuscula/Mayuscula
+;(define (comienzaA s )
+;  (if
+   
+;   (or (string=? (substring s 0 1) "A")
+       
+;       (string=? (substring s 0 1) "a"))
+;   #true #false))
+;(comienzaA "alfredo") o (comienzaA "Alfredo") --> Verdadero
+
+;b. Metodo de igualacion (equal?) --> Funcion
+;(define (comienzaA? s) (equal? (substring s 0 1) "A"))
+;(comienzaA? "Alfredo")
+
+;c. Metodo con string-ci=?
+;(define (comienzaA? s) (string-ci=? (substring s 0 1) "A"))
+;(comienzaA? "Alfredo")
+
+;12
+;(define (poner- s i) (string-append (substring s 0 i) "-" (substring s i (string-length s))))
+;(poner- "hola" 2)
